@@ -11,19 +11,19 @@ import java.io.IOException;
  */
 public class Rotor {
     
-    public int rotorNum;
+    public String rotorNum;
     public int[] wiring;
     
-    public Rotor(int rotorNum){
+    public Rotor(String rotorNum){
         this.rotorNum = rotorNum;
         this.wiring = getWiring(rotorNum);
     }
     
-    public int getRotorNum(){
+    public String getRotorNum(){
         return this.rotorNum;
     }
     
-    public void setRotorNum(int rotorNum){
+    public void setRotorNum(String rotorNum){
         this.rotorNum = rotorNum;
     }
     
@@ -39,7 +39,16 @@ public class Rotor {
         return wiring[input];
     }
     
-    private int[] getWiring(int rotorNum){
+    public int transcodeNumReflection(int input){
+        for(int i = 0; i < wiring.length; i++){
+            if(wiring[i] == input){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    private int[] getWiring(String rotorNum){
         try {
             BufferedReader br = getFile(rotorNum);
             String line = br.readLine();
@@ -62,7 +71,7 @@ public class Rotor {
         return null;
     }
     
-    private BufferedReader getFile(int rotorNum) throws FileNotFoundException{
+    private BufferedReader getFile(String rotorNum) throws FileNotFoundException{
         return new BufferedReader(new FileReader("src/enigma/rotors/" + rotorNum + ".csv"));
     }
 }

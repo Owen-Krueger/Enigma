@@ -15,9 +15,12 @@ public class Enigma {
     public static void main(String[] args) {            
         int num = StaticRotor.letterToNum('k');
                 
-        Rotor rotor = new Rotor(1);
+        Rotor rotor = new Rotor("Rotor1");
         num = rotor.transcodeNum(num);
-        System.out.print(num);
+        System.out.print(StaticRotor.numToLetter(num));
+        
+        num = rotor.transcodeNumReflection(num);
+        System.out.print(StaticRotor.numToLetter(num));
     }
     
 }

@@ -1,4 +1,5 @@
 package enigma.ui;
+import enigma.rotors.StaticRotor;
 import java.util.Scanner;
 
 /**
@@ -11,8 +12,8 @@ public class BasicUI {
         while(true){
             Scanner scan = new Scanner(System.in);
 
-            String next = scan.next();
-            System.out.print(next);
+            //String next = scan.next();
+            //System.out.print(next);
         }
     }
 }

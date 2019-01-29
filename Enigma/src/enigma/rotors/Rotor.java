@@ -19,6 +19,26 @@ public class Rotor {
         this.wiring = getWiring(rotorNum);
     }
     
+    public int getRotorNum(){
+        return this.rotorNum;
+    }
+    
+    public void setRotorNum(int rotorNum){
+        this.rotorNum = rotorNum;
+    }
+    
+    public int[] getWiring(){
+        return this.wiring;
+    }
+    
+    public void setWiring(int[] wiring){
+        this.wiring = wiring;
+    }
+    
+    public int transcodeNum(int input){
+        return wiring[input];
+    }
+    
     private int[] getWiring(int rotorNum){
         try {
             BufferedReader br = getFile(rotorNum);

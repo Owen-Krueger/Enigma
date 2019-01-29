@@ -13,11 +13,11 @@ public class Enigma {
      * @param args the command line arguments
      */
     public static void main(String[] args) {            
-        System.out.println(StaticRotor.letterToNum('k'));
-        System.out.println(StaticRotor.numToLetter(10));
-        
+        int num = StaticRotor.letterToNum('k');
+                
         Rotor rotor = new Rotor(1);
-        System.out.println(rotor.wiring);
+        num = rotor.transcodeNum(num);
+        System.out.print(num);
     }
     
 }

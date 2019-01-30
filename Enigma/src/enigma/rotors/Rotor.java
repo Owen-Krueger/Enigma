@@ -13,10 +13,12 @@ public class Rotor {
     
     public String rotorNum;
     public int[] wiring;
+    public int numRotations;
     
     public Rotor(String rotorNum){
         this.rotorNum = rotorNum;
-        this.wiring = getWiring(rotorNum);
+        this.wiring = wireFromFile(rotorNum);
+        this.numRotations = 0;
     }
     
     public String getRotorNum(){
@@ -35,6 +37,23 @@ public class Rotor {
         this.wiring = wiring;
     }
     
+    public int getNumRotations(){
+        return this.numRotations;
+    }
+    
+    public void setNumRotations(int num){
+        this.numRotations = num;
+    }
+    
+    public void rotate(){
+        int[] wiringCopy = new int[26];
+        for(int i = 0; i < wiringCopy.length-1; i++){
+            wiringCopy[i] = this.wiring[i+1];
+        }
+        wiringCopy[25] = this.wiring[0];
+        this.numRotations++;
+    }
+    
     public int transcodeNum(int input){
         return wiring[input];
     }
@@ -48,7 +67,7 @@ public class Rotor {
         return -1;
     }
     
-    private int[] getWiring(String rotorNum){
+    private int[] wireFromFile(String rotorNum){
         try {
             BufferedReader br = getFile(rotorNum);
             String line = br.readLine();

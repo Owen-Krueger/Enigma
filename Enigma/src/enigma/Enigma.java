@@ -1,6 +1,8 @@
 package enigma;
 
+import enigma.plugboard.Plugboard;
 import enigma.rotors.Rotor;
+import enigma.rotors.RotorGroup;
 import enigma.rotors.StaticRotor;
 
 /**
@@ -9,6 +11,25 @@ import enigma.rotors.StaticRotor;
  */
 public class Enigma {
 
+    RotorGroup rg;
+    Plugboard pb;
+    
+    public Enigma(){
+        
+    }
+    
+    public Enigma(RotorGroup rg, Plugboard pb){
+        this.rg = rg;
+        this.pb = pb;
+    }
+    
+    public char runLetter(char letter){
+        letter = pb.replaceChar(letter);
+        rg.calculateLetter(letter);
+        letter = pb.replaceChar(letter);
+        return letter;
+    }
+        
     /**
      * @param args the command line arguments
      */

@@ -72,7 +72,7 @@ public class Rotor {
     public void setNumRotations(int num){
         this.numRotations = num;
     }
-    
+        
     /**
      * Rotate rotor and change connections
      */
@@ -82,6 +82,7 @@ public class Rotor {
             wiringCopy[i] = this.wiring[i+1];
         }
         wiringCopy[25] = this.wiring[0];
+        this.wiring = wiringCopy;
         if(this.numRotations == 25){
             this.numRotations = 0;
         }

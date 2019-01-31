@@ -23,12 +23,4 @@ public class Enigma {
         System.out.print(StaticRotor.numToLetter(num));
     }
     
-    public void initRotors(){
-        
-    }
-    
-    public static void runLetter(int num){
-        
-    }
-    
 }

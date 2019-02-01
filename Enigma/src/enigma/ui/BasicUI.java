@@ -26,5 +26,8 @@ public class BasicUI {
         System.out.println(StaticRotor.numToLetter(rg.calculateLetter('i')));
         //String next = scan.next();
         //System.out.print(next);
+        
+        MainUI mu = new MainUI();
+        mu.setVisible(true);
     }
 }

@@ -1,7 +1,9 @@
 package enigma.ui;
 
+import enigma.errors.InvalidConfig;
 import enigma.rotors.*;
 import enigma.plugboard.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,9 +60,9 @@ public class EnigmaUI extends javax.swing.JFrame {
         cbRotor1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "1", "2", "3", "4", "5" }));
 
         btnConfirm.setText("Set Configuration");
-        btnConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConfirmMouseClicked(evt);
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
             }
         });
 
@@ -118,25 +120,29 @@ public class EnigmaUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         if(cbRotor1.getSelectedItem() == cbRotor2.getSelectedItem() ||
                 cbRotor2.getSelectedItem() == cbRotor3.getSelectedItem() ||
                 cbRotor1.getSelectedItem() == cbRotor3.getSelectedItem()){
             //Can't use same rotor twice
+            JOptionPane.showMessageDialog(null, "Can't use the same rotor twice.");
+            return;            
         }
         if(cbReflector.getSelectedIndex() == 0 ||
                 cbRotor1.getSelectedIndex() == 0 ||
                 cbRotor2.getSelectedIndex() == 0 ||
                 cbRotor3.getSelectedIndex() == 0){
             //Have to select all rotors
+            JOptionPane.showMessageDialog(null, "Need to select all options.");
+            return;
         }
         Rotor rotor1 = new Rotor("Rotor" + cbRotor1.getSelectedItem().toString());
         Rotor rotor2 = new Rotor("Rotor" + cbRotor2.getSelectedItem().toString());
         Rotor rotor3 = new Rotor("Rotor" + cbRotor3.getSelectedItem().toString());
         Rotor reflector = new Rotor("Reflector" + cbReflector.getSelectedItem().toString());
         
-        RotorGroup rg = new RotorGroup(rotor1, rotor2, rotor3, reflector);        
-    }//GEN-LAST:event_btnConfirmMouseClicked
+        RotorGroup rg = new RotorGroup(rotor1, rotor2, rotor3, reflector); 
+    }//GEN-LAST:event_btnConfirmActionPerformed
     
     /**
      * @param args the command line arguments

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class EnigmaUI extends javax.swing.JFrame {
 
+    boolean configured = false;
     /**
      * Creates new form EnigmaUI
      */
@@ -42,6 +43,14 @@ public class EnigmaUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(102, 102, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.white);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         cbReflector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "B", "C" }));
 
@@ -142,7 +151,18 @@ public class EnigmaUI extends javax.swing.JFrame {
         Rotor reflector = new Rotor("Reflector" + cbReflector.getSelectedItem().toString());
         
         RotorGroup rg = new RotorGroup(rotor1, rotor2, rotor3, reflector); 
+        configured = true;
     }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(!configured){
+            JOptionPane.showMessageDialog(null, "You need to set your configuration first!");
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+
+    }//GEN-LAST:event_formKeyReleased
     
     /**
      * @param args the command line arguments
